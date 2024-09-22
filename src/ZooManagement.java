@@ -5,18 +5,13 @@ public class ZooManagement {
         int nbrCages = 20 ;
         String zooname = "myzoo";
         System.out.println(zooname + " comporte " + nbrCages + " cages");
-        zoo.displayZooInfo();
+
+        Animal lion = new Animal("LionKing", "Lion", 5, true);
+        Animal[] animals = { lion };
+        Zoo myZoo = new Zoo("Zahra", "Ariana" , 25,animals);
         zoo.updateZooInfo();
-        System.out.println("Les informations du zoo ont été mises à jour.");
-        zoo.displayZooInfo();
 
     }
-    int nbrCages  ;
-    String zooname ;
-    public void displayZooInfo() {
-        System.out.println( zooname + " comporte " + nbrCages + " cages.");
-    }
-
     public void updateZooInfo() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Entrez le nom du zoo : ");
@@ -29,6 +24,8 @@ public class ZooManagement {
                 nbrCages = scanner.nextInt();
                 if (nbrCages > 0) {
                     validInput = true;
+                    System.out.println("Les informations du zoo ont été mises à jour.");
+                    System.out.println(zooname + " comporte " + nbrCages + " cages");;
                 } else {
                     System.out.println("Le nombre de cages doit être supérieur à 0.");
                 }
