@@ -10,4 +10,10 @@ public class Animal {
         this.age = age;
         this.isMammal = isMammal ;
 
-} }
+}
+    public void displayAnimal() {
+        System.out.println("Nom: " + name + ", Famille: " + family + ", Âge: " + age + ", Mammifère: " + isMammal);
+    }
+    public String toString() {
+        return "Animal: " + name + ", Famille: " + family + ", Âge: " + age + ", Mammifère: " + isMammal;
+    }}

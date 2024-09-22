@@ -9,8 +9,9 @@ public class ZooManagement {
         Animal lion = new Animal("LionKing", "Lion", 5, true);
         Animal[] animals = { lion };
         Zoo myZoo = new Zoo("Zahra", "Ariana" , 25,animals);
+        System.out.println(myZoo);
+        System.out.println(lion);
         zoo.updateZooInfo();
-
     }
     public void updateZooInfo() {
         Scanner scanner = new Scanner(System.in);
