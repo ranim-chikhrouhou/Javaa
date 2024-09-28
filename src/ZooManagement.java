@@ -1,41 +1,45 @@
-import java.util.Scanner;
 public class ZooManagement {
     public static void main(String[] args) {
-        ZooManagement zoo = new ZooManagement();
-        int nbrCages = 20 ;
+        ZooManagement zooManagement = new ZooManagement();
+        int nbrCages = 4;
         String zooname = "myzoo";
         System.out.println(zooname + " comporte " + nbrCages + " cages");
 
-        Animal lion = new Animal("LionKing", "Lion", 5, true);
-        Animal[] animals = { lion };
-        Zoo myZoo = new Zoo("Zahra", "Ariana" , 25,animals);
-        System.out.println(myZoo);
-        System.out.println(lion);
-        zoo.updateZooInfo();
-    }
-    public void updateZooInfo() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Entrez le nom du zoo : ");
-        String zooname = scanner.nextLine();
-        boolean validInput = false;
-        while (!validInput) {
-            System.out.print("Entrez le nombre de cages : ");
-            if (scanner.hasNextInt()) {
-                int nbrCages;
-                nbrCages = scanner.nextInt();
-                if (nbrCages > 0) {
-                    validInput = true;
-                    System.out.println("Les informations du zoo ont été mises à jour.");
-                    System.out.println(zooname + " comporte " + nbrCages + " cages");;
-                } else {
-                    System.out.println("Le nombre de cages doit être supérieur à 0.");
-                }
-            } else {
-                System.out.println("Veuillez entrer un nombre valide.");
-                scanner.next();
-            }
+        Animal lion = new Animal("LionKing", "Simba", 5, true);
+        Animal tiger = new Animal("Tiger", "Shere Khan", 4, true);
+        Animal elephant = new Animal("Elephant", "Dumbo", 10, true);
+        Animal giraffe = new Animal("Giraffe", "Melman", 7, true);
+
+        Zoo myZoo = new Zoo("Zahra", "Ariana", nbrCages);
+
+        myZoo.addAnimal(lion);
+        myZoo.addAnimal(tiger);
+        myZoo.addAnimal(elephant);
+        myZoo.addAnimal(giraffe);
+
+        myZoo.displayAnimals();
+
+        System.out.println("\nSuppression de l'animal 'Simba' (Lion):");
+        boolean removed = myZoo.removeAnimal(lion);
+        if (removed) {
+            System.out.println("L'animal a été supprimé.");
+        } else {
+            System.out.println("Échec de la suppression de l'animal.");
         }
-        scanner.close();
+
+        myZoo.displayAnimals();
+
+        System.out.println("\nRecherche de l'animal 'Simba' (Lion) après suppression:");
+        int foundIndex = myZoo.searchAnimal(lion);
+        if (foundIndex != -1) {
+            System.out.println("Animal trouvé à l'indice " + foundIndex);
+        } else {
+            System.out.println("Animal non trouvé.");
+        }
+
+        zooManagement.updateZooInfo();
     }
 
+    public void updateZooInfo() {
+    }
 }
