@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 public class ZooManagement {
     public static void main(String[] args) {
         ZooManagement zooManagement = new ZooManagement();
@@ -10,7 +15,7 @@ public class ZooManagement {
         Animal elephant = new Animal("Elephant", "Dumbo", 10, true);
         Animal giraffe = new Animal("Giraffe", "Melman", 7, true);
 
-        Zoo myZoo1 = new Zoo("Zahra", "Ariana",4);
+        Zoo myZoo1 = new Zoo("Zahra", "Ariana");
 
         myZoo1.addAnimal(lion);
         myZoo1.addAnimal(tiger);
@@ -31,9 +36,9 @@ public class ZooManagement {
         System.out.println("\nRecherche de l'animal 'Simba' (Lion) après suppression:");
         int foundIndex = myZoo1.searchAnimal(lion);
         if (foundIndex != -1) {
-            System.out.println("Animal trouvé à l'indice " + foundIndex);
+            System.out.println("tn.esprit.gestionzoo.entities.Animal trouvé à l'indice " + foundIndex);
         } else {
-            System.out.println("Animal non trouvé.");
+            System.out.println("tn.esprit.gestionzoo.entities.Animal non trouvé.");
         }
 
         Animal Panda = new Animal("pandas", "poupou", 5, true);
@@ -42,7 +47,7 @@ public class ZooManagement {
         Animal turtle = new Animal("Giraffe", "Gigi", 7, true);
         Animal butterfly = new Animal("Butterflies", "Butter", 7, true);
 
-        Zoo myZoo2 = new Zoo("Atlas", "Tunis",4);
+        Zoo myZoo2 = new Zoo("Atlas", "Tunis");
 
         myZoo2.addAnimal(Panda);
         myZoo2.addAnimal(koala);
