@@ -2,6 +2,9 @@ package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.Animal;
 import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.Aquatic;
+import tn.esprit.gestionzoo.entities.Dolphin;
+import tn.esprit.gestionzoo.entities.Penguin;
 
 public class ZooManagement {
     public static void main(String[] args) {
@@ -15,6 +18,14 @@ public class ZooManagement {
         Animal elephant = new Animal("Elephant", "Dumbo", 10, true);
         Animal giraffe = new Animal("Giraffe", "Melman", 7, true);
 
+        Aquatic aquaticAnimal = new Aquatic("Aquatic Family", "AquaticAnimal", 3, false, "Ocean");
+        Dolphin dolphin = new Dolphin("Dolphin", "Flipper", 5, true, "Sea", 25.5f);
+        Penguin penguin = new Penguin("Penguin", "Pingu", 2, false, "Antarctica", 10.0f);
+
+        System.out.println(aquaticAnimal);
+        System.out.println(dolphin);
+        System.out.println(penguin);
+
         Zoo myZoo1 = new Zoo("Zahra", "Ariana");
 
         myZoo1.addAnimal(lion);
@@ -23,6 +34,7 @@ public class ZooManagement {
         myZoo1.addAnimal(giraffe);
 
         myZoo1.displayAnimals();
+
 
         System.out.println("\nSuppression de l'animal 'Simba' (Lion):");
         boolean removed = myZoo1.removeAnimal(lion);
@@ -63,6 +75,10 @@ public class ZooManagement {
         if (largerZoo != null) {
             System.out.println("Le zoo avec le plus d'animaux est : " + largerZoo.name);
         }
+
+        aquaticAnimal.swim();
+        dolphin.swim();
+        penguin.swim();
 
         zooManagement.updateZooInfo();
     }
