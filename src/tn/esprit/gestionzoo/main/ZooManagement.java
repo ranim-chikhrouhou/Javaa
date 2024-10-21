@@ -8,7 +8,9 @@ import tn.esprit.gestionzoo.entities.Penguin;
 
 public class ZooManagement {
     public static void main(String[] args) {
+
         ZooManagement zooManagement = new ZooManagement();
+        Zoo myZoo = new Zoo("Zoo de Tunis", "Tunis");
         int nbrCages = 4;
         String zooname = "myzoo";
         System.out.println(zooname + " comporte " + nbrCages + " cages");
@@ -18,11 +20,13 @@ public class ZooManagement {
         Animal elephant = new Animal("Elephant", "Dumbo", 10, true);
         Animal giraffe = new Animal("Giraffe", "Melman", 7, true);
 
-        Aquatic aquaticAnimal = new Aquatic("Aquatic Family", "AquaticAnimal", 3, false, "Ocean");
         Dolphin dolphin = new Dolphin("Dolphin", "Flipper", 5, true, "Sea", 25.5f);
-        Penguin penguin = new Penguin("Penguin", "Pingu", 2, false, "Antarctica", 10.0f);
+        Penguin penguin = new Penguin("Pingu", 5, false, "Antarctica", 200.0f);
 
-        System.out.println(aquaticAnimal);
+        myZoo.addAquaticAnimal(dolphin);
+        myZoo.addAquaticAnimal(penguin);
+        myZoo.displayAnimals();
+        myZoo.displayAllAquaticAnimalsSwimming();
         System.out.println(dolphin);
         System.out.println(penguin);
 
@@ -76,7 +80,6 @@ public class ZooManagement {
             System.out.println("Le zoo avec le plus d'animaux est : " + largerZoo.name);
         }
 
-        aquaticAnimal.swim();
         dolphin.swim();
         penguin.swim();
 

@@ -1,18 +1,24 @@
 package tn.esprit.gestionzoo.entities;
 
 public class Zoo {
-    private Animal[] animals;
-    public String name;
-    private String city;
-    private static final int MAX_ANIMALS = 25;
-    private int animalCount;
+        private Animal[] animals; // tableau pour les animaux terrestres
+        private Aquatic[] aquaticAnimals; // tableau pour les animaux aquatiques
+        public String name;
+        private String city;
+        private static final int MAX_ANIMALS = 25;
+        private static final int MAX_AQUATICS = 10;
+        private int animalCount;
+        private int aquaticCount;
 
-    public Zoo(String name, String city) {
-        setName(name);
-        this.city = city;
-        this.animals = new Animal[MAX_ANIMALS];
-        this.animalCount = 0;
-    }
+        public Zoo(String name, String city) {
+            setName(name);
+            this.name = name;
+            this.city = city;
+            this.animals = new Animal[MAX_ANIMALS];
+            this.aquaticAnimals = new Aquatic[MAX_AQUATICS];
+            this.animalCount = 0;
+            this.aquaticCount = 0;
+        }
 
     public void setName(String name) {
         if (name != null && !name.trim().isEmpty()) {
@@ -96,4 +102,56 @@ public class Zoo {
             return null;
         }
     }
+    public void addAquaticAnimal(Aquatic aquatic) {
+        if (aquaticCount >= MAX_AQUATICS) {
+            System.out.println("Le zoo est plein d'animaux aquatiques.");
+            return;
+        }
+
+        for (int i = 0; i < aquaticAnimals.length; i++) {
+            if (aquaticAnimals[i] == null) {
+                aquaticAnimals[i] = aquatic;
+                aquaticCount++;
+                System.out.println("Animal aquatique " + aquatic.getName() + " ajouté au zoo.");
+                return;
+            }
+        }
+    }
+    public void displayAllAquaticAnimalsSwimming() {
+        for (Aquatic aquatic : aquaticAnimals) {
+            if (aquatic != null) {
+                aquatic.swim();  // Appelle la méthode swim() pour chaque animal aquatique
+            }
+        }
+    }
+    public float maxPenguinSwimmingDepth() {
+        float maxDepth = 0;
+
+        for (Aquatic aquatic : aquaticAnimals) {
+            if (aquatic instanceof Penguin) {
+                Penguin penguin = (Penguin) aquatic;
+                if (penguin.getSwimmingDepth() > maxDepth) {
+                    maxDepth = penguin.getSwimmingDepth();
+                }
+            }
+        }
+
+        return maxDepth;
+    }
+    public void displayNumberOfAquaticsByType() {
+        int dolphinCount = 0;
+        int penguinCount = 0;
+
+        for (Aquatic aquatic : aquaticAnimals) {
+            if (aquatic instanceof Dolphin) {
+                dolphinCount++;
+            } else if (aquatic instanceof Penguin) {
+                penguinCount++;
+            }
+        }
+
+        System.out.println("Nombre de dauphins : " + dolphinCount);
+        System.out.println("Nombre de pingouins : " + penguinCount);
+    }
+
 }
